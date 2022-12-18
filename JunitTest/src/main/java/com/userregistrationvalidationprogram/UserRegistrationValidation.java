@@ -34,7 +34,7 @@ public class UserRegistrationValidation {
     }
 
     public boolean validateMoble(String mobileNumber){
-        boolean result=Pattern.matches("^[0-9]{10,}$",mobileNumber);
+        boolean result=Pattern.matches("^(0|[0-9]{1,5})?([0-9]{10})$",mobileNumber);
         if(result) {
             System.out.println("Mobile Number is Valid");
             return true;
@@ -42,4 +42,15 @@ public class UserRegistrationValidation {
         System.out.println("Invalid Mobile Number ");
         return false;
     }
+
+    public boolean validatePassword(String password){
+        boolean result=Pattern.matches("(?=^.{8,}$)((?=.*\\d)|(?=.*\\W+))(?![.\\n])(?=.*[A-Z])(?=.*[a-z]).*$",password);
+        if(result) {
+            System.out.println("Password is Valid");
+            return true;
+        }
+        System.out.println("Invalid Password ");
+        return false;
+    }
+
 }

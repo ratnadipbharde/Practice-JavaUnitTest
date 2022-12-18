@@ -1,38 +1,50 @@
 package com.userregistrationvalidationprogram;
 
 import junit.framework.TestCase;
+import org.junit.Assert;
+import org.junit.Test;
 
 import java.util.ArrayList;
 
-public class UserRegistrationValidationTest extends TestCase {
-
+public class UserRegistrationValidationTest {
+    @Test
     public void testValidateFirstName() {
-        assertTrue("assertTrue-Pass", new UserRegistrationValidation().validateFirstName("Ratnadip"));
-        assertFalse("assertFalse-pass",new UserRegistrationValidation().validateFirstName("ratnadip"));
+        Assert.assertTrue("assertTrue-Pass", new UserRegistrationValidation().validateFirstName("Ratnadip"));
+        Assert.assertFalse("assertFalse-pass", new UserRegistrationValidation().validateFirstName("ratnadip"));
 
     }
 
+    @Test
     public void testValidateLastName() {
-        assertTrue(new UserRegistrationValidation().validateLastName("Bharde"));
+        Assert.assertTrue(new UserRegistrationValidation().validateLastName("Bharde"));
     }
+
+    @Test
 
     public void testValidateEmail() {
-        assertTrue(new UserRegistrationValidation().validateEmail("ratnadipbharde@gmail.com"));
+        Assert.assertTrue(new UserRegistrationValidation().validateEmail("ratnadipbharde@gmail.com"));
     }
 
+    @Test
     public void testValidateMoble() {
-        assertTrue(new UserRegistrationValidation().validateMoble("8983253934"));
+        new UserRegistrationValidation().validateMoble("8983253934");
     }
 
+    @Test
     public void testTestValidateEmail() {
-    ArrayList<String>list=new ArrayList<>();
-    list.add("abc@gmail.com");
-    list.add("123@gmail.co.in");
-    list.add("adfvsdfgbc@yahoomail.com");
-    list.add("345dfs@zapakmail.com");
-    list.add("fgh.fd@india.com");
-    list.add("345sdf.cvb@gmail.com");
+        ArrayList<String> list = new ArrayList<>();
+        list.add("abc@gmail.com");
+        list.add("123@gmail.co.in");
+        list.add("adfvsdfgbc@yahoomail.com");
+        list.add("345dfs@zapakmail.com");
+        list.add("fgh.fd@india.com");
+        list.add("345sdf.cvb@gmail.com");
         for (String i : list)
-            assertTrue(new UserRegistrationValidation().validateEmail(i));
+            Assert.assertTrue(new UserRegistrationValidation().validateEmail(i));
+    }
+
+    @Test
+    public void validatePassword() {
+        Assert.assertTrue(new UserRegistrationValidation().validatePassword("Pass@123"));
     }
 }
